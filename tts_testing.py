@@ -19,6 +19,13 @@ def SynthesizeTTS(model_name_, text_, filename):
     ref_wav, ref_sr = ls.load(ref_fpath, sr=44400)
     gen_wav, gen_sr = ls.load(gen_fpath, sr=44400)
     
+    if (ref_wav.shape == gen_wav.shape):
+        print("#######")
+        corr = np.corrcoef(ref_wav, gen_wav)
+        print("Corr coeff:")
+        print(corr)
+        print("#######")
+    
     # if (ref_wav.shape[0] != gen_wav.shape[0]):
     #     print("RESHAPED!!!")
     #     mshape = max(ref_wav.shape[0], gen_wav.shape[0])
